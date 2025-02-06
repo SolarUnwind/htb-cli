@@ -88,7 +88,7 @@ func fetchAndDisplayInfo(url, header string, params []string, elementType string
 			url  string
 		}{
 			{"Fortresses", "/user/profile/progress/fortress/"},
-			{"Endgames", "/user/profile/progress/endgame/"},
+			// {"Endgames", "/user/profile/progress/endgame/"},
 			{"Prolabs", "/user/profile/progress/prolab/"},
 			{"Activity", "/user/profile/activity/"},
 		}
