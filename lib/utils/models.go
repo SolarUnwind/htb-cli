@@ -35,15 +35,15 @@ type JsonResponse struct {
 }
 
 // Endgames
-type Endgame struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-}
+// type Endgame struct {
+//	ID   int    `json:"id"`
+//	Name string `json:"name"`
+// }
 
-type EndgameJsonResponse struct {
-	Status bool      `json:"status"`
-	Data   []Endgame `json:"data"`
-}
+// type EndgameJsonResponse struct {
+//	Status bool      `json:"status"`
+//	Data   []Endgame `json:"data"`
+// }
 
 // Prolabs
 

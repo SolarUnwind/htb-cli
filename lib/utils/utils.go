@@ -379,7 +379,7 @@ func HtbRequest(method string, urlParam string, jsonData []byte) (*http.Response
 		return nil, err
 	}
 
-	req.Header.Set("User-Agent", "htb-cli")
+	req.Header.Set("User-Agent", "htb-ui-sucking-bitch")
 	req.Header.Set("Authorization", "Bearer "+JWT_TOKEN)
 
 	if method == http.MethodPost {
@@ -488,7 +488,7 @@ func HTTPRequest(method string, urlParam string, jsonData []byte) (*http.Respons
 		return nil, err
 	}
 
-	req.Header.Set("User-Agent", "htb-cli")
+	req.Header.Set("User-Agent", "htb-ui-sucking-bitch")
 
 	if method == http.MethodPost {
 		req.Header.Set("Content-Type", "application/json")
@@ -608,51 +608,51 @@ func SearchFortressID(partialName string) (int, error) {
 	return 0, nil
 }
 
-func extractEndgamesNamesAndIDs(jsonData string) (map[string]int, error) {
-	var response EndgameJsonResponse
-	err := json.Unmarshal([]byte(jsonData), &response)
-	if err != nil {
-		return nil, err
-	}
+// func extractEndgamesNamesAndIDs(jsonData string) (map[string]int, error) {
+//	var response EndgameJsonResponse
+//	err := json.Unmarshal([]byte(jsonData), &response)
+//	if err != nil {
+//		return nil, err
+//	}
 
-	namesAndIDs := make(map[string]int)
-	for _, item := range response.Data {
-		namesAndIDs[item.Name] = item.ID
-	}
+//	namesAndIDs := make(map[string]int)
+//	for _, item := range response.Data {
+//		namesAndIDs[item.Name] = item.ID
+//	}
 
-	return namesAndIDs, nil
-}
+//	return namesAndIDs, nil
+// }
 
-func SearchEndgameID(partialName string) (int, error) {
-	url := fmt.Sprintf("%s/endgames", config.BaseHackTheBoxAPIURL)
-	resp, err := HtbRequest(http.MethodGet, url, nil)
-	if err != nil {
-		return 0, err
-	}
-	jsonData, _ := io.ReadAll(resp.Body)
-	namesAndIDs, err := extractEndgamesNamesAndIDs(string(jsonData))
-	if err != nil {
-		fmt.Println("Error parsing JSON:", err)
-		return 0, nil
-	}
+// func SearchEndgameID(partialName string) (int, error) {
+//	url := fmt.Sprintf("%s/endgames", config.BaseHackTheBoxAPIURL)
+//	resp, err := HtbRequest(http.MethodGet, url, nil)
+//	if err != nil {
+//		return 0, err
+//	}
+//	jsonData, _ := io.ReadAll(resp.Body)
+//	namesAndIDs, err := extractEndgamesNamesAndIDs(string(jsonData))
+//	if err != nil {
+//		fmt.Println("Error parsing JSON:", err)
+//		return 0, nil
+//	}
 
-	var names []string
-	for name := range namesAndIDs {
-		names = append(names, name)
-	}
+//	var names []string
+//	for name := range namesAndIDs {
+//		names = append(names, name)
+//	}
 
-	matches := fuzzy.Find(partialName, names)
+//	matches := fuzzy.Find(partialName, names)
 
-	for _, match := range matches {
-		matchedName := names[match.Index]
-		isConfirmed := AskConfirmation("The following endgame was found: " + matchedName)
-		if isConfirmed {
-			return namesAndIDs[matchedName], nil
-		}
-		os.Exit(0)
-	}
-	return 0, nil
-}
+//	for _, match := range matches {
+//		matchedName := names[match.Index]
+//		isConfirmed := AskConfirmation("The following endgame was found: " + matchedName)
+//		if isConfirmed {
+//			return namesAndIDs[matchedName], nil
+//		}
+//		os.Exit(0)
+//	}
+//	return 0, nil
+// }
 
 func SearchProlabID(partialName string) (int, error) {
 	url := fmt.Sprintf("%s/prolabs", config.BaseHackTheBoxAPIURL)

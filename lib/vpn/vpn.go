@@ -117,7 +117,7 @@ func DownloadAll() error {
 	urls := []string{
 		baseURL + "labs",
 		baseURL + "starting_point",
-		baseURL + "endgames",
+		// baseURL + "endgames",
 		baseURL + "fortresses",
 		baseURL + "competitive",
 	}
@@ -370,7 +370,7 @@ func List() error {
 	urls := []string{
 		baseURL + "labs",
 		baseURL + "starting_point",
-		baseURL + "endgames",
+		// baseURL + "endgames",
 		baseURL + "fortresses",
 		baseURL + "competitive",
 	}

@@ -93,15 +93,15 @@ func CoreSubmitCmd(difficultyParam int, modeType string, modeValue string) (stri
 		config.GlobalConfig.Logger.Debug(fmt.Sprintf("Fortress ID : %d", fortressID))
 		url = fmt.Sprintf("%s/fortress/%d/flag", config.BaseHackTheBoxAPIURL, fortressID)
 		payload = map[string]string{}
-	} else if modeType == "endgame" {
-		config.GlobalConfig.Logger.Info("Endgame submit requested")
-		endgameID, err := utils.SearchEndgameID(modeValue)
-		if err != nil {
-			return "", "", err
-		}
-		config.GlobalConfig.Logger.Debug(fmt.Sprintf("Endgame ID : %d", endgameID))
-		url = fmt.Sprintf("%s/endgame/%d/flag", config.BaseHackTheBoxAPIURL, endgameID)
-		payload = map[string]string{}
+	// } else if modeType == "endgame" {
+	//	config.GlobalConfig.Logger.Info("Endgame submit requested")
+	//	endgameID, err := utils.SearchEndgameID(modeValue)
+	//	if err != nil {
+	//		return "", "", err
+	//	}
+	//	config.GlobalConfig.Logger.Debug(fmt.Sprintf("Endgame ID : %d", endgameID))
+	//	url = fmt.Sprintf("%s/endgame/%d/flag", config.BaseHackTheBoxAPIURL, endgameID)
+	//	payload = map[string]string{}
 	} else if modeType == "prolab" {
 		config.GlobalConfig.Logger.Info("Prolab submit requested")
 		prolabID, err := utils.SearchProlabID(modeValue)
